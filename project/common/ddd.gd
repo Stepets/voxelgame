@@ -27,7 +27,7 @@ func _ready():
 	# Meh
 	var c = Control.new()
 	add_child(c)
-	_font = c.get_font("font")
+	_font = c.get_theme_font("font")
 	c.queue_free()
 	print("Got font ", _font)
 
@@ -49,7 +49,7 @@ func draw_box(position: Vector3, size: Vector3, color: Color = Color(1,1,1)):
 
 
 func draw_line(a, b, color):
-	var g = ImmediateGeometry.new()
+	var g = ImmediateGeometry3D.new()
 	g.material_override = _get_line_material()
 	g.begin(Mesh.PRIMITIVE_LINES)
 	g.set_color(color)
@@ -73,7 +73,7 @@ func set_text(key, text):
 func _get_box():
 	var mi
 	if len(_box_pool) == 0:
-		mi = MeshInstance.new()
+		mi = MeshInstance3D.new()
 		mi.mesh = _box_mesh
 		add_child(mi)
 	else:
@@ -90,7 +90,7 @@ func _recycle_box(mi):
 func _get_line_material():
 	var mat
 	if len(_line_material_pool) == 0:
-		mat = SpatialMaterial.new()
+		mat = StandardMaterial3D.new()
 		mat.flags_unshaded = true
 		mat.vertex_color_use_as_albedo = true
 	else:
@@ -136,7 +136,7 @@ func _process(delta):
 	if _canvas_item == null:
 		_canvas_item = Node2D.new()
 		_canvas_item.position = Vector2(8, 8)
-		_canvas_item.connect("draw", self, "_on_CanvasItem_draw")
+		#_canvas_item.connect("draw", Callable(self, StringName("_on_CanvasItem_draw")))
 		add_child(_canvas_item)
 	_canvas_item.update()
 
@@ -163,7 +163,7 @@ func _on_CanvasItem_draw():
 
 
 static func _create_wirecube_mesh(color = Color(1,1,1)):
-	var positions = PoolVector3Array([
+	var positions = PackedVector3Array([
 		Vector3(0, 0, 0),
 		Vector3(1, 0, 0),
 		Vector3(1, 0, 1),
@@ -173,11 +173,11 @@ static func _create_wirecube_mesh(color = Color(1,1,1)):
 		Vector3(1, 1, 1),
 		Vector3(0, 1, 1)
 	])
-	var colors = PoolColorArray([
+	var colors = PackedColorArray([
 		color, color, color, color,
 		color, color, color, color,
 	])
-	var indices = PoolIntArray([
+	var indices = PackedInt32Array([
 		0, 1,
 		1, 2,
 		2, 3,

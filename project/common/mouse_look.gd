@@ -1,5 +1,5 @@
 
-extends Spatial
+extends Node3D
 
 export var sensitivity = 0.4
 export var min_angle = -90

@@ -1,4 +1,4 @@
-extends Spatial
+extends Node3D
 
 export var speed = 5.0
 export var gravity = 9.8

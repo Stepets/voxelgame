@@ -32,7 +32,7 @@ func _process(delta):
 	DDD.set_text("FPS", Engine.get_frames_per_second())
 	DDD.set_text("Main thread block updates", stats.remaining_main_thread_blocks)
 	DDD.set_text("Static memory", _format_memory(OS.get_static_memory_usage()))
-	DDD.set_text("Dynamic memory", _format_memory(OS.get_dynamic_memory_usage()))
+	#DDD.set_text("Dynamic memory", _format_memory(OS.get_dynamic_memory_usage()))
 	DDD.set_text("Blocked lods", stats.blocked_lods)
 	DDD.set_text("Load sort time", stats.stream.sorting_time)
 	DDD.set_text("Mesh sort time", stats.updater.sorting_time)

@@ -1,15 +1,15 @@
-extends Node
+extends Node3D
 
 onready var _terrain = get_parent().get_node("VoxelTerrain")
 
 
 func _process(delta):
-	var dm = OS.get_dynamic_memory_usage()
+	#var dm = OS.get_dynamic_memory_usage()
 	var sm = OS.get_static_memory_usage()
 
 	var stats = _terrain.get_statistics()
 	
-	DDD.set_text("Dynamic memory", _format_memory(dm))
+	#DDD.set_text("Dynamic memory", _format_memory(dm))
 	DDD.set_text("Static memory", _format_memory(sm))
 
 	for i in len(stats.stream.remaining_blocks_per_thread):

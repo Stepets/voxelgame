@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 
 onready var _head = get_parent().get_node("Camera")
 onready var _terrain = get_parent().get_parent().get_node("VoxelTerrain")

@@ -5,7 +5,7 @@
 
 
 
-[node name="SpectatorAvatar" type="Spatial"]
+[node name="SpectatorAvatar" type="Node3D"]
 script = ExtResource( 2 )
 speed = 5.0
 

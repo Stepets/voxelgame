@@ -27,7 +27,7 @@ func _ready():
 		_terrain = get_node(terrain_path)
 	
 	var mesh = Util.create_wirecube_mesh(Color(0,0,0))
-	var mesh_instance = MeshInstance.new()
+	var mesh_instance = MeshInstance3D.new()
 	mesh_instance.mesh = mesh
 	if cursor_material != null:
 		mesh_instance.material_override = cursor_material
@@ -110,10 +110,10 @@ func select_inventory(i):
 
 func can_place_voxel_at(pos):
 	var space_state = get_viewport().get_world().get_direct_space_state()
-	var params = PhysicsShapeQueryParameters.new()
+	var params = PhysicsShapeQueryParameters3D.new()
 	params.collision_mask = COLLISION_LAYER_AVATAR
 	params.transform = Transform(Basis(), pos + Vector3(1,1,1)*0.5)
-	var shape = BoxShape.new()
+	var shape = BoxShape3D.new()
 	var ex = 0.5
 	shape.extents = Vector3(ex, ex, ex)
 	params.set_shape(shape)
